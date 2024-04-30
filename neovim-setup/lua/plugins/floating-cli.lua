@@ -1,0 +1,29 @@
+return {
+	--"VonHeikemen/fine-cmdline.nvim",
+	--dependencies = {
+	--	"MunifTanjim/nui.nvim",
+	--},
+	--config = function()
+	--	require("fine-cmdline").setup({
+	--		cmdline = {
+	--			smart_history = true,
+	--			prompt = "➤ ",
+	--		},
+	--		popup = {
+      --          position = {
+        --            row = "50%",
+          --          col = "50%",
+            --    },
+			--	border = {
+	--				style = "rounded",
+	--			},
+	--			size = {
+	--				width = "50%",
+	--			},
+	--			win_options = {
+	--				winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+	--			},
+	--		},
+	--	})
+--	end,
+}

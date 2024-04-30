@@ -7,7 +7,7 @@ return {
         "tpope/vim-fugitive",
         "mfussenegger/nvim-dap-python",
         "mxsdev/nvim-dap-vscode-js",
-        "nvim-neotest/nvim-nio"
+        "nvim-neotest/nvim-nio",
     },
     config = function()
         require("dapui").setup()
@@ -62,6 +62,22 @@ return {
         }
         -- typescript settings
         dap.configurations.typescript = {
+
+            {
+                type = "pwa-node",
+                request = "launch",
+                name = "Debug Jest Tests",
+                -- trace = true, -- include debugger info
+                runtimeExecutable = "node",
+                runtimeArgs = {
+                    "./node_modules/jest/bin/jest.js",
+                    "--runInBand",
+                },
+                rootPath = "${workspaceFolder}",
+                cwd = "${workspaceFolder}",
+                console = "integratedTerminal",
+                internalConsoleOptions = "neverOpen",
+            },
             {
                 type = "pwa-node",
                 request = "launch",
@@ -79,7 +95,7 @@ return {
                 port = 9229,
                 restart = true,
                 trace = true,
-                outFiles = {"${workspaceFolder}/**/*.js"},
+                outFiles = { "${workspaceFolder}/**/*.js" },
                 localRoot = "${workspaceFolder}",
                 remoteRoot = "${workspaceFolder}",
                 protocol = "inspector",

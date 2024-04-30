@@ -8,4 +8,5 @@ vim.cmd("syntax on")
 vim.cmd("set encoding=utf8")
 vim.g.mapleader = " "
 vim.keymap.set('n', '<C-s>',':vsp<CR>', {} )
+--vim.keymap.set('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
 

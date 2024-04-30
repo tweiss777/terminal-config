@@ -11,8 +11,6 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					-- angularls not working
-					-- "angularls",
 					"csharp_ls",
 					"cssls",
 					"dockerls",
