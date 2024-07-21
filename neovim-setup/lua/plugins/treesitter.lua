@@ -1,6 +1,6 @@
 -- not working
 return {
-	"/nvim-treesitter/nvim-treesitter",
+	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
 	config = function()
 		--tree sitter config

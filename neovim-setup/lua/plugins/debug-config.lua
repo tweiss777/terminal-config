@@ -153,10 +153,16 @@ return {
             args = { "--interpreter=vscode" },
         }
         dap.configurations.cs = {
+            -- for a console app
             {
                 type = "coreclr",
-                name = "launch - netcoredbg",
+                name = "launch console debugging - netcoredbg",
                 request = "launch",
+     --           env ="ASPNETCORE_ENVIRONMENT=Development",
+                args = {
+                    "--urls=http://localhost:3000",
+	--				"--environment=Development"
+                },
                 program = function()
                     -- see if you can initiate dotnet build before debugging
                     print("Building...")
@@ -169,6 +175,9 @@ return {
                         return nil -- Return nil to cancel the debug launch
                     end
                     return vim.fn.input("Path to project dll->", vim.fn.getcwd() .. "/", "file")
+                end,
+                cwd = function()
+                    return vim.fn.input("Workspace folder: ", vim.fn.getcwd() .. "/", "file")
                 end,
             },
         }

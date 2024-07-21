@@ -5,7 +5,7 @@ return {
     },
     config = function()
         require("lualine").setup({
-            option = { theme = "dracula" },
+            option = { theme = "vscode" },
         })
     end,
 }

@@ -9,4 +9,6 @@ vim.cmd("set encoding=utf8")
 vim.g.mapleader = " "
 vim.keymap.set('n', '<C-s>',':vsp<CR>', {} )
 --vim.keymap.set('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
+vim.keymap.set('n', '<C-d>',':lua require("vscode").load("light")', {} )
+vim.keymap.set('n', '<C-l>', ':lua require("vscode").load("dark")', {} )
 

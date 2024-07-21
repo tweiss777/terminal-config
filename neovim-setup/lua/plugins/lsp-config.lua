@@ -21,6 +21,7 @@ return {
 					"sqls",
 					"rust_analyzer",
 					"volar",
+                    "jedi_language_server",
 				},
 			})
 		end,
