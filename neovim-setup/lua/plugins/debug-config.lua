@@ -146,6 +146,45 @@ return {
             dapui.close()
         end
 
+        -- python configurations
+        -- crashes after debugger finishes...
+        dap.configurations.python = {
+            {
+                name = "Launch Python File",
+                type = "python",
+                request = "launch",
+                program = "${file}",
+            },
+            {
+                type = "python",
+                request = "launch",
+                name = "Launch project with virtual env",
+                program = "${file}",
+                pythonPath = function()
+                    -- Get the current working directory (where your virtual environment is located)
+                    local cwd = vim.fn.input("Enter path to venv.", vim.fn.getcwd() .. "/env/bin/python", "file")
+                    -- Return the path to the Python interpreter in the virtual environment
+                    return cwd
+                end,
+            },
+            {
+                type = "python",
+                request = "launch",
+                name = "Debug Django App",
+                program = function()
+                    local cwd = vim.fn.input("Enter path to manage.py: ", vim.fn.getcwd() .. "/manage.py", "file")
+                    return cwd
+                end,
+                pythonPath = function()
+                    -- Get the current working directory and append the venv path
+                    local cwd = vim.fn.input("Enter path to venv: ", vim.fn.getcwd() .. "/env/bin/python", "file")
+                    -- Return the path to the Python interpreter in the virtual environment
+                    return cwd
+                end,
+                args = { "runserver", "0.0.0.0:8000", '--noreload' },
+            },
+        }
+
         --dotnet configuration
         dap.adapters.coreclr = {
             type = "executable",
@@ -158,10 +197,10 @@ return {
                 type = "coreclr",
                 name = "launch console debugging - netcoredbg",
                 request = "launch",
-     --           env ="ASPNETCORE_ENVIRONMENT=Development",
+                --           env ="ASPNETCORE_ENVIRONMENT=Development",
                 args = {
                     "--urls=http://localhost:3000",
-	--				"--environment=Development"
+                    --				"--environment=Development"
                 },
                 program = function()
                     -- see if you can initiate dotnet build before debugging
