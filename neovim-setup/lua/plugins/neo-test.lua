@@ -7,10 +7,14 @@ return {
         "antoinemadec/FixCursorHold.nvim",
         "nvim-treesitter/nvim-treesitter",
         "nvim-neotest/neotest-jest",
+        "Issafalcon/neotest-dotnet"
     },
     config = function()
         require("neotest").setup({
             adapters = {
+                require("neotest-dotnet")({
+                    discovery_root = 'solution'
+                }),
                 require("neotest-jest")({
                     jestCommand = "yarn test", -- Adjust this based on your npm command
                     jestConfigFile = "jest.config.js", -- If you have a Jest config file
