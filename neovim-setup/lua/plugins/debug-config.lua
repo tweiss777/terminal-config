@@ -62,7 +62,22 @@ return {
         }
         -- typescript settings
         dap.configurations.typescript = {
-
+            {
+                type = "pwa-node",
+                request = "launch",
+                name = "Debug Individual Jest test",
+                -- trace = true, -- include debugger info
+                runtimeExecutable = "node",
+                runtimeArgs = {
+                    "./node_modules/jest/bin/jest.js",
+                    "--runInBand",
+                },
+                rootPath = "${workspaceFolder}",
+                file= "${file}",
+                cwd = "${workspaceFolder}",
+                console = "integratedTerminal",
+                internalConsoleOptions = "neverOpen",
+            },
             {
                 type = "pwa-node",
                 request = "launch",
@@ -181,7 +196,7 @@ return {
                     -- Return the path to the Python interpreter in the virtual environment
                     return cwd
                 end,
-                args = { "runserver", "0.0.0.0:8000", '--noreload' },
+                args = { "runserver", "0.0.0.0:8000", "--noreload" },
             },
         }
 

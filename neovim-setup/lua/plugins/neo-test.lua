@@ -19,12 +19,7 @@ return {
                     jestCommand = "yarn test", -- Adjust this based on your npm command
                     jestConfigFile = "jest.config.js", -- If you have a Jest config file
                     env = { CI = true },
-                    jest_test_discovery = false,
-                    discovery = {
-                         enabled = false,
-                        -- pattern = "**/__tests__/**",
-                        -- exclude_pattern = "**/node_modules/**",
-                    },
+                    
                     cwd = function(path)
                         -- Assuming tests are in a 'tests' folder
                         local relative_path = vim.fn.fnamemodify(path, ":~:.")
