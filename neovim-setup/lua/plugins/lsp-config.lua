@@ -24,6 +24,7 @@ return {
                     "volar",
                     "jedi_language_server",
                     "harper_ls",
+                    "jdtls",
                 },
             })
         end,
@@ -92,6 +93,18 @@ return {
                 capabilities = capabilities,
             })
             lspconfig.tailwindcss.setup({})
+            lspconfig.jdtls.setup({
+                capabilities = capabilities,
+            })
+            -- not working
+            lspconfig.apex_ls.setup({
+                cmd = { "java", "-jar", "/Users/talweiss/.apex/apex-jorje-lsp.jar", "apex_language_server" },
+                filetypes = { "apex", "apexcode", "cls", "trigger" },
+                apex_enable_semantic_errors = true,
+                apex_enable_completion_statistics = true,
+                capabilities = capabilities,
+            })
+
 
             -- keymaps
             -- hover to get variable data
